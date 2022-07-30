@@ -46,12 +46,11 @@ app.post('/search', (req, res)=> {
     })
     .then(playlistRes => {
         alltracks = playlistRes.data.tracks;
+        res.render('index.ejs',{
+            tracks:alltracks
+        })
     })
-    setTimeout(() => {
-      res.render('index.ejs',{
-        tracks:alltracks
-      })
-    }, 5000);
+    
 })
 
 app.listen(3000, ()=> console.log(`App listening on localhost:3000`));

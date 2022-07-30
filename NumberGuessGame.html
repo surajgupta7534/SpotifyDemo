@@ -1,0 +1,55 @@
+<html>
+    <title>Guess the Number</title>
+    <body>
+        <div>
+            <lable>Enter the number </lable>
+            <input type="text" id="input">
+            <button onclick="check()" type="submit">Submit</button>
+            <p>
+                <h1>Guess left = <span id="left">10</span></h1>
+            </p>
+            <p>
+              <h3>
+                <p id="result"> Your last guess was : <span id="previousGuess">"Guess between 0 to 100"</span></p>
+              </h3>
+            </p>
+        </div>
+
+        <script type="text/javascript">
+            var count = 10;
+            var target = Math.floor((Math.random()*100+1));
+
+            function check(){
+
+                var value = document.getElementById("input").value;
+                
+                if(isNaN(value)){
+                    alert("Please Enter number between 0 to 100");
+                }
+                else {
+                    count = count - 1 ;
+                    if(count< 0){
+                        alert("Your all guesses is Consumed!!!")
+                    }
+                    else{
+                        if(target == value){
+                            alert("You Won the Game!!");
+                            document.getElementById("result").innerHTML = "You Won the Game"
+                        }
+                        else if(target > value) {
+                            alert(value+ " is less than target");
+                        }
+                        else {
+                            alert(value+ " is greater than target");
+                        }
+                        document.getElementById("previousGuess").innerHTML = value;
+                        document.getElementById("left").innerHTML = count;
+
+                        console.log("Button Pressed!! with value "+ target + " and count is " +count);
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>

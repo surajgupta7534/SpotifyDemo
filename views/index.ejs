@@ -1,0 +1,15 @@
+<html>
+    <title>
+        Songs
+    </title>
+    <body>
+        <% tracks.forEach((track) => { %>
+            <p> Song name : <%=track.name%>
+                popularity = <%=track.popularity%>
+                <a href=<%=track.preview_url%>>preview</a>
+                <a href="https://open.spotify.com/track/<%=track.id%>">play</a>
+            </p>
+            <hr>
+          <% }) %>
+    </body>
+</html>

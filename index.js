@@ -50,6 +50,9 @@ app.post('/search', (req, res)=> {
             tracks:alltracks
         })
     })
+    .catch( result=> {
+      res.render('index.ejs')
+    })
     
 })
 

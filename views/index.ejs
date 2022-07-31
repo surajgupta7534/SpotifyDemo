@@ -2,14 +2,42 @@
     <title>
         Songs
     </title>
+    <style>
+        table{  
+            border-collapse: collapse;  
+            width: 100%;   
+        }  
+    th,td{  
+        border: 2px solid green;  
+        height: 100%; 
+        padding: 15px;  
+    }  
+        </style>
     <body>
-        <% tracks.forEach((track) => { %>
-            <p> Song name : <%=track.name%>
-                popularity = <%=track.popularity%>
-                <a href=<%=track.preview_url%>>preview</a>
-                <a href="https://open.spotify.com/track/<%=track.id%>">play</a>
-            </p>
-            <hr>
-          <% }) %>
+        <div>
+            <table>
+                <tr>
+                    <th><h3>Song Name</h3></th>
+                    <th><h3>Popularity</h3></th>
+                    <th><h3>Artist</h3></th>
+                    <th><h3>Preview</h3></th>
+                </tr>
+                <% tracks.forEach((track) => { %>
+                    <tr>
+                       <th><%=track.name%></th>
+                       <th><%=track.popularity%></th>
+                       <th><%= track.artists[0].name %></th>
+                       <% if(track.preview_url===null){ %>
+                        <th> Not Available</th>
+                      <% } else{ %>  
+                        <th><audio controls>
+                            <source src = "<%=track.preview_url%>"" >
+                            </audio>
+                        </th>
+                     <% } %>
+                    </tr>
+                <%}) %>
+            </table>
+        </div>
     </body>
 </html>
